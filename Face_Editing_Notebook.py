@@ -2,26 +2,21 @@
 # coding: utf-8
 import os
 
-# # Notebook II: Playing with Latent Codes
+# Notebook II: Playing with Latent Codes
+# 
+# OK, first, the really annoying part:
+# Google Colab uses TensorFlow version 1.14 by default (which comes with Cuda 10.0)
+# Unfortunately the repo we'll be using requires TF version 1.12 and Cuda 9.0...
 
-# ![alt text](https://raw.githubusercontent.com/tr1pzz/InterFaceGAN/master/teaser.jpg)
+import subprocess
+import sys
 
-# # OK, first, the really annoying part:
-# ### Google Colab uses TensorFlow version 1.14 by default (which comes with Cuda 10.0)
-# ### Unfortunately the repo we'll be using requires TF version 1.12 and Cuda 9.0...
-
-# In[1]:
-
-
-os.system('pip install tensorflow')
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'tensorflow'])
 import tensorflow as tf
 print(tf.__version__)
 
 
-# In[2]:
-
-
-os.system('nvcc --version')
+subprocess.check_call(['nvcc', '--version'])
 
 
 # ## Annoying part 1 of 2: Downgrade to TensorFlow 1.12.2
