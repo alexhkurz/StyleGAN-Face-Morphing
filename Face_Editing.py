@@ -31,7 +31,7 @@ except FileNotFoundError:
 
 import tensorflow as tf
 
-print("Now running TensorFlow version %s on Colab!" %tf.__version__)
+print("Now running TensorFlow version %s!" %tf.__version__)
 assert tf.__version__.startswith('2.')
 
 
