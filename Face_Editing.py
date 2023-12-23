@@ -90,6 +90,7 @@ if os.path.exists('output_vectors.npy'):
     final_w_vectors = np.load('output_vectors.npy')
 else:
     print("'output_vectors.npy' does not exist.")
+    sys.exit("'output_vectors.npy' does not exist.")
 
 print("%d latent vectors of shape %s loaded from %s!" %(final_w_vectors.shape[0], str(final_w_vectors.shape[1:]), 'output_vectors.npy'))
 
