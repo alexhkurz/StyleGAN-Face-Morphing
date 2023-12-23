@@ -89,8 +89,8 @@ else:
 
 
 import numpy as np
-if os.path.exists('InterFaceGAN/output_vectors.npy'):
-    final_w_vectors = np.load('InterFaceGAN/output_vectors.npy')
+if os.path.exists('output_vectors.npy'):
+    final_w_vectors = np.load('output_vectors.npy')
 else:
     print("'output_vectors.npy' does not exist in the current directory.")
     sys.exit("'output_vectors.npy' does not exist in the current directory.")
