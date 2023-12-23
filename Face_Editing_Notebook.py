@@ -81,7 +81,7 @@ os.system('mv /content/InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl /conte
 
 
 import numpy as np
-final_w_vectors = np.load('/content/output_vectors.npy')
+final_w_vectors = np.load('output_vectors.npy')
 
 print("%d latent vectors of shape %s loaded from %s!" %(final_w_vectors.shape[0], str(final_w_vectors.shape[1:]), 'output_vectors.npy'))
 
