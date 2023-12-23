@@ -72,7 +72,7 @@ import gdown
 url = 'https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ'
 output = 'karras2019stylegan-ffhq-1024x1024.pkl'
 gdown.download(url, output, quiet=False)
-os.system('mv /content/InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl /content/InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
+os.system('mv InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
 
 
 # # I. Let's load our latent space vectors:
@@ -86,11 +86,11 @@ os.system('mv /content/InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl /conte
 
 
 import numpy as np
-if os.path.exists('output_vectors.npy'):
-    final_w_vectors = np.load('output_vectors.npy')
+if os.path.exists('InterFaceGAN/output_vectors.npy'):
+    final_w_vectors = np.load('InterFaceGAN/output_vectors.npy')
 else:
-    print("'output_vectors.npy' does not exist.")
-    sys.exit("'output_vectors.npy' does not exist.")
+    print("'InterFaceGAN/output_vectors.npy' does not exist.")
+    sys.exit("'InterFaceGAN/output_vectors.npy' does not exist.")
 
 print("%d latent vectors of shape %s loaded from %s!" %(final_w_vectors.shape[0], str(final_w_vectors.shape[1:]), 'output_vectors.npy'))
 
