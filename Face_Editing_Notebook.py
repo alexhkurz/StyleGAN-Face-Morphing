@@ -16,7 +16,10 @@ import tensorflow as tf
 print(tf.__version__)
 
 
-subprocess.check_call(['nvcc', '--version'])
+try:
+    subprocess.check_call(['nvcc', '--version'])
+except FileNotFoundError:
+    print("Warning: CUDA toolkit not found. Some functionality may not be available.")
 
 
 
