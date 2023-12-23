@@ -73,7 +73,7 @@ if not os.path.exists('InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024
     url = 'https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ'
     output = 'karras2019stylegan-ffhq-1024x1024.pkl'
     gdown.download(url, output, quiet=False)
-    os.system('mv InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
+    os.system('mv karras2019stylegan-ffhq-1024x1024.pkl models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
 else:
     print("File 'karras2019stylegan-ffhq-1024x1024.pkl' already exists. Skipping download.")
 
@@ -92,8 +92,8 @@ import numpy as np
 if os.path.exists('InterFaceGAN/output_vectors.npy'):
     final_w_vectors = np.load('InterFaceGAN/output_vectors.npy')
 else:
-    print("'InterFaceGAN/output_vectors.npy' does not exist.")
-    sys.exit("'InterFaceGAN/output_vectors.npy' does not exist.")
+    print("'output_vectors.npy' does not exist in the current directory.")
+    sys.exit("'output_vectors.npy' does not exist in the current directory.")
 
 print("%d latent vectors of shape %s loaded from %s!" %(final_w_vectors.shape[0], str(final_w_vectors.shape[1:]), 'output_vectors.npy'))
 
