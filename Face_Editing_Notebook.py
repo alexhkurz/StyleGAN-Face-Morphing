@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.6
 # coding: utf-8
+import os
 
 # # Notebook II: Playing with Latent Codes
 
@@ -12,7 +13,7 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('tensorflow_version', '1.x')
+os.system('pip install tensorflow==1.12')
 import tensorflow as tf
 print(tf.__version__)
 
@@ -20,7 +21,7 @@ print(tf.__version__)
 # In[2]:
 
 
-get_ipython().system('nvcc --version')
+os.system('nvcc --version')
 
 
 # ## Annoying part 1 of 2: Downgrade to TensorFlow 1.12.2
@@ -28,7 +29,7 @@ get_ipython().system('nvcc --version')
 # In[3]:
 
 
-get_ipython().system('pip install --upgrade tensorflow-gpu==1.12.2')
+os.system('pip install --upgrade tensorflow-gpu==1.12.2')
 
 
 # ## Annoying part 2 of 2: Install Cuda 9.0 (this can take a few minutes, be patient)
@@ -36,12 +37,12 @@ get_ipython().system('pip install --upgrade tensorflow-gpu==1.12.2')
 # In[1]:
 
 
-get_ipython().system('wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb')
-get_ipython().system('dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb')
-get_ipython().system('apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub')
-get_ipython().system('apt-get update')
-get_ipython().system('apt-get install cuda=9.0.176-1')
-get_ipython().system('echo ****** Cuda reinstall completed. Restart runtime now! *******')
+os.system('wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb')
+os.system('dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb')
+os.system('apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub')
+os.system('apt-get update')
+os.system('apt-get install cuda=9.0.176-1')
+os.system('echo ****** Cuda reinstall completed. Restart runtime now! *******')
 
 
 # ## When the above cell has finished executing, restart the kernel runtime to reload everything
@@ -55,7 +56,7 @@ get_ipython().system('echo ****** Cuda reinstall completed. Restart runtime now!
 # In[3]:
 
 
-get_ipython().run_line_magic('tensorflow_version', '1.x')
+os.system('pip install tensorflow==1.12')
 import tensorflow as tf
 
 #print("Now running TensorFlow version %s on Colab!" %tf.VERSION)
@@ -65,7 +66,7 @@ import tensorflow as tf
 # In[4]:
 
 
-get_ipython().system('nvcc --version')
+os.system('nvcc --version')
 
 
 # ## If the above cells showed TensorFlow version 1.12.2 and Cuda release 9.0, you're good to go!
@@ -79,7 +80,7 @@ get_ipython().system('nvcc --version')
 # In[5]:
 
 
-get_ipython().system('git clone https://github.com/tr1pzz/InterFaceGAN.git')
+os.system('git clone https://github.com/tr1pzz/InterFaceGAN.git')
 
 
 # In[6]:
@@ -93,8 +94,8 @@ cd /content/InterFaceGAN/
 # In[7]:
 
 
-get_ipython().system('gdown https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ')
-get_ipython().system('mv /content/InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl /content/InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
+os.system('gdown https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ')
+os.system('mv /content/InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl /content/InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
 
 
 # # I. Let's load our latent space vectors:
@@ -191,8 +192,8 @@ else:
 
 if 0:
   latent_direction = 'age'
-  get_ipython().system('rm -r results/age')
-  get_ipython().system("python edit.py      -m stylegan_ffhq      -b boundaries/stylegan_ffhq_age_w_boundary.npy      -s Wp      -i '/content/output_vectors.npy'      -o results/age      --start_distance -3.0      --end_distance 3.0      --steps=48")
+  os.system('rm -r results/age')
+  os.system("python edit.py      -m stylegan_ffhq      -b boundaries/stylegan_ffhq_age_w_boundary.npy      -s Wp      -i '/content/output_vectors.npy'      -o results/age      --start_distance -3.0      --end_distance 3.0      --steps=48")
 
 
 # # IV. Finally, turn the results into pretty movies!
