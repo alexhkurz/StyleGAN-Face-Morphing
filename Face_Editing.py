@@ -89,11 +89,11 @@ else:
 
 
 import numpy as np
-if os.path.exists('InterFaceGAN/output_vectors.npy'):
-    final_w_vectors = np.load('InterFaceGAN/output_vectors.npy')
+if os.path.exists('output_vectors.npy'):
+    final_w_vectors = np.load('output_vectors.npy')
 else:
-    print("'output_vectors.npy' does not exist in the 'InterFaceGAN' directory.")
-    sys.exit("'output_vectors.npy' does not exist in the 'InterFaceGAN' directory.")
+    print("'output_vectors.npy' does not exist in the current directory.")
+    sys.exit("'output_vectors.npy' does not exist in the current directory.")
 
 print("%d latent vectors of shape %s loaded from %s!" %(final_w_vectors.shape[0], str(final_w_vectors.shape[1:]), 'output_vectors.npy'))
 
