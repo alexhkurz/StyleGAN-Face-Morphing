@@ -11,7 +11,7 @@ import os
 import subprocess
 import sys
 
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'tensorflow==2.6.0'])
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'tensorflow'])
 import tensorflow as tf
 print(tf.__version__)
 
