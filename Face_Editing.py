@@ -67,12 +67,15 @@ os.chdir('InterFaceGAN/')
 # In[7]:
 
 
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'gdown'])
-import gdown
-url = 'https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ'
-output = 'karras2019stylegan-ffhq-1024x1024.pkl'
-gdown.download(url, output, quiet=False)
-os.system('mv InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
+if not os.path.exists('InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl'):
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'gdown'])
+    import gdown
+    url = 'https://drive.google.com/uc?id=1MEGjdvVpUsu1jB4zrXZN7Y4kBBOzizDQ'
+    output = 'karras2019stylegan-ffhq-1024x1024.pkl'
+    gdown.download(url, output, quiet=False)
+    os.system('mv InterFaceGAN/karras2019stylegan-ffhq-1024x1024.pkl InterFaceGAN/models/pretrain/karras2019stylegan-ffhq-1024x1024.pkl')
+else:
+    print("File 'karras2019stylegan-ffhq-1024x1024.pkl' already exists. Skipping download.")
 
 
 # # I. Let's load our latent space vectors:
