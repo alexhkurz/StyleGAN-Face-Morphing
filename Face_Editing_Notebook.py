@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.9
+#!/usr/bin/env python3.10
 # coding: utf-8
 import os
 
@@ -11,7 +11,7 @@ import os
 import subprocess
 import sys
 
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'tensorflow'])
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'tensorflow==2.6.0'])
 import tensorflow as tf
 print(tf.__version__)
 
@@ -19,25 +19,6 @@ print(tf.__version__)
 subprocess.check_call(['nvcc', '--version'])
 
 
-# ## Annoying part 1 of 2: Downgrade to TensorFlow 1.12.2
-
-# In[3]:
-
-
-os.system('pip install --upgrade tensorflow')
-
-
-# ## Annoying part 2 of 2: Install Cuda 9.0 (this can take a few minutes, be patient)
-
-# In[1]:
-
-
-
-
-# ## When the above cell has finished executing, restart the kernel runtime to reload everything
-# > * At the top, click 'Runtime --> restart runtime'
-# > * Continue with the cells below!
-# > * In fact, let's just pretend that annoying part never happened...
 
 # ### Safety check to see if everything worked:
 # (This might not work as intended due to TF 1.12 being a very old / deprecated version of TensorFlow...) 
@@ -45,11 +26,10 @@ os.system('pip install --upgrade tensorflow')
 # In[3]:
 
 
-os.system('pip install tensorflow')
 import tensorflow as tf
 
-#print("Now running TensorFlow version %s on Colab!" %tf.VERSION)
-#assert tf.VERSION.startswith('2.')
+print("Now running TensorFlow version %s on Colab!" %tf.__version__)
+assert tf.__version__.startswith('2.')
 
 
 # In[4]:
