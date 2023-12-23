@@ -58,7 +58,7 @@ os.system('git clone https://github.com/tr1pzz/InterFaceGAN.git')
 # In[6]:
 
 
-os.chdir('/content/InterFaceGAN/')
+os.chdir('InterFaceGAN/')
 
 
 # ## Download the pretrained StyleGAN FFHQ network from NVIDIA:
