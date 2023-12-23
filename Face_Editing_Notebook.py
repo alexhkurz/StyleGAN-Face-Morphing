@@ -37,12 +37,6 @@ os.system('pip install --upgrade tensorflow')
 # In[1]:
 
 
-os.system('wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb')
-os.system('dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb')
-os.system('apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub')
-os.system('apt-get update')
-os.system('apt-get install cuda=9.0.176-1')
-os.system('echo ****** Cuda reinstall completed. Restart runtime now! *******')
 
 
 # ## When the above cell has finished executing, restart the kernel runtime to reload everything
@@ -56,11 +50,11 @@ os.system('echo ****** Cuda reinstall completed. Restart runtime now! *******')
 # In[3]:
 
 
-os.system('pip install tensorflow==1.12')
+os.system('pip install tensorflow')
 import tensorflow as tf
 
 #print("Now running TensorFlow version %s on Colab!" %tf.VERSION)
-#assert tf.VERSION == '1.12.2'
+#assert tf.VERSION.startswith('2.')
 
 
 # In[4]:
