@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3.9
 # coding: utf-8
 import os
 
@@ -13,7 +13,7 @@ import os
 # In[1]:
 
 
-os.system('pip install tensorflow==1.12')
+os.system('pip install tensorflow')
 import tensorflow as tf
 print(tf.__version__)
 
@@ -29,7 +29,7 @@ os.system('nvcc --version')
 # In[3]:
 
 
-os.system('pip install --upgrade tensorflow-gpu==1.12.2')
+os.system('pip install --upgrade tensorflow')
 
 
 # ## Annoying part 2 of 2: Install Cuda 9.0 (this can take a few minutes, be patient)
