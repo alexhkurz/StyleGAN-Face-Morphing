@@ -6,7 +6,7 @@
 import logging
 import os
 import sys
-sys.path.append(os.path.join(os.getcwd(), 'stylegan'))
+sys.path.append(os.path.join(os.getcwd(), 'stylegan-encoder'))
 logging.basicConfig(level=logging.DEBUG)
 
 # Part I: Encoding images into StyleGAN's latent space
