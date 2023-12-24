@@ -93,7 +93,7 @@ os.system('rm -rf aligned_images raw_images')
 # In[ ]:
 
 
-mkdir aligned_images raw_images
+os.system('mkdir aligned_images raw_images')
 
 
 # # I. Get Images:
