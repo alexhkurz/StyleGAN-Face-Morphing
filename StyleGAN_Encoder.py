@@ -71,7 +71,7 @@ os.system('git clone https://github.com/pbaylies/stylegan-encoder')
 # In[2]:
 
 
-cd stylegan-encoder
+os.chdir('stylegan-encoder')
 
 
 # ### Let's see the files inside the repo we just cloned:
