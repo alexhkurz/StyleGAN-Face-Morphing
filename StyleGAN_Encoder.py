@@ -179,6 +179,8 @@ print("\n************ Latent code optimization finished! ***************")
 # In[13]:
 
 
+import sys
+sys.path.append('/path/to/stylegan')
 import dnnlib, pickle
 import dnnlib.tflib as tflib
 tflib.init_tf()
