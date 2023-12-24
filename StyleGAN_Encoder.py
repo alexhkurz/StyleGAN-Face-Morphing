@@ -1,196 +1,32 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import logging
+# Adapted from https://www.youtube.com/watch?v=dCKbRCUyop8
 
+import logging
 logging.basicConfig(level=logging.DEBUG)
 
-# # Colab Notebook for my video "Face editing with Generative Adversarial Networks": 
-# https://www.youtube.com/watch?v=dCKbRCUyop8
-# 
-
-# # Part I: Encoding images into StyleGAN's latent space
-
-# ![alt text](https://miro.medium.com/max/1280/0*eeFaGLx96mlbQcrK.gif)
-
-# # Start: To run this demo StyleGAN code, make a local copy of this notebook in your drive!
-
-# ## Before you move on, make sure you have GPU acceleration enabled:
-# > ### Click 'Runtime' in the menu tab at the top
-# > ### Click 'Change runtime type'
-# > ### Make sure the hardware accelerator is set to 'GPU'
-
-# # This is a hosted IPython notebook
-# ### For those not familiar, all you really need to know is:
-# * There are text cells (like this one) 
-# * And Python code cells (like the one below)
-# * If you want the full tutorial, you can find it here: https://colab.research.google.com/notebooks/welcome.ipynb
-# 
-# ### To run a code cell, simply click inside it and hit "shift+enter"
-# (hitting shift + enter repeatedly will run through all the cells sequentially)
-# ### Don't worry if you're new to this: 
-# > If things don't work, you can always click "Runtime-->Reset all runtimes" and restart the whole notebook if you mess up!
-
-# In[1]:
-
-
-a = 20
-b = 30
-c = a+b
-logging.info("The sum of %d and %d is %d.", a, b, c)
-
-
-# ## --EDIT-- Colab tqdm version fix:
-
-# 1. Upgrade tqdm:
-
-# In[2]:
-
+# Part I: Encoding images into StyleGAN's latent space
 
 import os
 result = os.system('pip install --upgrade tqdm')
 logging.info("Upgraded tqdm, result: %s", result)
-
-
-# 2. Restart the Python kernel to load the updated version:
-
-# In[ ]:
-
-
-import os 
-logging.info("About to kill the process...")
-# os.kill(os.getpid(), 9)
-
-
-# ## Now we can start for real:
-# ### Let's first clone the Github repo we'll use: https://github.com/pbaylies/stylegan-encoder
-
-# In[1]:
-
 
 result = os.system('rm -rf sample_data')
 logging.info("Removed sample_data, result: %s", result)
 result = os.system('git clone https://github.com/pbaylies/stylegan-encoder')
 logging.info("Cloned stylegan-encoder, result: %s", result)
 
-
-# ### cd into the repo folder: (only run this cell once or things might get buggy)
-
-# In[2]:
-
-
 os.chdir('stylegan-encoder')
-
-
-# ### Let's see the files inside the repo we just cloned:
-
-# In[3]:
-
-
 print(os.listdir())
 
-
-# ### Some housekeeping: setting up folder structure for our images:
-
-# In[ ]:
-
-
 os.system('rm -rf aligned_images raw_images')
-
-
-# In[ ]:
-
-
 os.system('mkdir aligned_images raw_images')
 
-
-# # I. Get Images:
-
-# ## Some tips for the images:
-# 
-# 
-# *   Use HD images (preferably > 1000x1000 pixels)
-# *   Make sure your face is not too small
-# *   Neutral expressions & front facing faces will give better results
-# *   Clear, uniform lighting conditions are also recommened
-# 
-# 
-
-# ## Option 1: Upload Images manually (usually gives the best results)
-
-# 
-# 
-# *   Click the '>' icon in the panel on the top left 
-# *   Go to the 'Files' tab
-# *   Unfold the stylegan-encoder folder (left-click)
 # *   Right click the 'stylegan-encoder/raw_images' folder and click "upload"
 # *   I'd recommend starting with 3 - 6 different images containing faces
-# 
-# 
-
-# ## Option 2: Take images using your webcam
-
-# In[ ]:
-
-
-from IPython.display import HTML, Audio
-# from google.colab.output import eval_js
-from base64 import b64decode
-import numpy as np
-import io
-from PIL import Image
-from datetime import datetime
-
-VIDEO_HTML = """
-<video autoplay
- width=%d height=%d style='cursor: pointer;'></video>
-<script>
-
-var video = document.querySelector('video')
-
-navigator.mediaDevices.getUserMedia({ video: true })
-  .then(stream=> video.srcObject = stream)
-  
-var data = new Promise(resolve=>{
-  video.onclick = ()=>{
-    var canvas = document.createElement('canvas')
-    var [w,h] = [video.offsetWidth, video.offsetHeight]
-    canvas.width = w
-    canvas.height = h
-    canvas.getContext('2d')
-          .drawImage(video, 0, 0, w, h)
-    video.srcObject.getVideoTracks()[0].stop()
-    video.replaceWith(canvas)
-    resolve(canvas.toDataURL('image/jpeg', %f))
-  }
-})
-</script>
-"""
-
-def take_photo(quality=1.0, size=(800,600)):
-  display(HTML(VIDEO_HTML % (size[0],size[1],quality)))
-  data = eval_js("data")
-  binary = b64decode(data.split(',')[1])
-  f = io.BytesIO(binary)
-  img = np.asarray(Image.open(f))
-  
-  timestampStr = datetime.now().strftime("%d-%b-%Y (%H:%M:%S.%f)")
-  filename = 'raw_images/photo_%s.jpeg' %timestampStr
-  Image.fromarray(img).save(filename)
-  print('Image captured and saved to %s' %filename)
-
-
-# In[ ]:
-
-
-img = take_photo() # click the image to capture a frame!
-
 
 # ## Let's check the contents of our image folder before we start:
-# #### (You can always manually delete images by right clicking on them in the file tab)
-
-# In[6]:
-
 
 from PIL import Image
 import os
