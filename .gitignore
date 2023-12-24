@@ -1,0 +1,6 @@
+.aider*
+.DS_Store
+.StyleGAN_Encoder.py.swp
+Face_Editing_Notebook-checkpoint.ipynb
+InterFaceGAN/
+stylegan-encoder/
