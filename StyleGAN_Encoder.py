@@ -34,6 +34,7 @@ os.system('mkdir aligned_images')
 
 from PIL import Image
 import os
+import matplotlib.pyplot as plt
 imgs = sorted(os.listdir('raw_images'))
 
 print("Found %d images in %s" %(len(imgs), 'raw_images'))
@@ -48,7 +49,8 @@ for img_path in imgs:
   w,h = img.size
   rescale_ratio = 256 / min(w,h)
   img = img.resize((int(rescale_ratio*w),int(rescale_ratio*h)), Image.LANCZOS)
-  display(img)
+  plt.imshow(img)
+  plt.show()
 
 
 # ## Make sure we're using the right TensorFlow version (1.15):
