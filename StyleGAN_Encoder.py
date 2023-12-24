@@ -180,7 +180,7 @@ print("\n************ Latent code optimization finished! ***************")
 
 
 import sys
-sys.path.append('/path/to/stylegan')
+sys.path.append(os.path.join(os.getcwd(), 'stylegan-encoder'))
 import dnnlib, pickle
 import dnnlib.tflib as tflib
 tflib.init_tf()
