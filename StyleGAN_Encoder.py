@@ -30,9 +30,6 @@
 # In[1]:
 
 
-# This is a cell with Python code
-# Execute the cell by clicking inside it and hitting shift+enter, or by clicking the 'run' button on the left of this cell
-
 a = 20
 b = 30
 c = a+b
@@ -46,7 +43,8 @@ print("The sum of %d and %d is %d." %(a,b,c))
 # In[2]:
 
 
-get_ipython().system('pip install --upgrade tqdm')
+import os
+os.system('pip install --upgrade tqdm')
 
 
 # 2. Restart the Python kernel to load the updated version:
@@ -64,8 +62,8 @@ os.kill(os.getpid(), 9)
 # In[1]:
 
 
-get_ipython().system('rm -rf sample_data')
-get_ipython().system('git clone https://github.com/pbaylies/stylegan-encoder')
+os.system('rm -rf sample_data')
+os.system('git clone https://github.com/pbaylies/stylegan-encoder')
 
 
 # ### cd into the repo folder: (only run this cell once or things might get buggy)
@@ -210,7 +208,6 @@ for img_path in imgs:
 # In[7]:
 
 
-get_ipython().run_line_magic('tensorflow_version', '1.x')
 import tensorflow as tf
 print(tf.__version__)
 
