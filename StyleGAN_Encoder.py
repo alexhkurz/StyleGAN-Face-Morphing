@@ -87,7 +87,7 @@ os.chdir('stylegan-encoder')
 # In[3]:
 
 
-ls
+print(os.listdir())
 
 
 # ### Some housekeeping: setting up folder structure for our images:
