@@ -129,9 +129,13 @@ display_folder_content('aligned_images')
 # In[10]:
 
 
-os.system('gdown https://drive.google.com/uc?id=1aT59NFy9-bNyXjDuZOTMl0qX0jmZc6Zb')
-os.system('mkdir data')
-os.system('mv finetuned_resnet.h5 data')
+if not os.path.exists('data/finetuned_resnet.h5'):
+    result = os.system('gdown https://drive.google.com/uc?id=1aT59NFy9-bNyXjDuZOTMl0qX0jmZc6Zb')
+    if result != 0:
+        print("Error downloading finetuned_resnet.h5. Please download it manually and place it in the 'data' directory.")
+        exit()
+    os.system('mkdir -p data')
+    os.system('mv finetuned_resnet.h5 data')
 os.system('rm -rf generated_images latent_representations')
 
 
