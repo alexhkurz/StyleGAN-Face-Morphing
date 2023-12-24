@@ -59,7 +59,7 @@ logging.info("Upgraded tqdm, result: %s", result)
 
 import os 
 logging.info("About to kill the process...")
-os.kill(os.getpid(), 9)
+# os.kill(os.getpid(), 9)
 
 
 # ## Now we can start for real:
