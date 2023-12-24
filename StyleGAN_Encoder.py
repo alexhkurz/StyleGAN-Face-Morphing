@@ -134,7 +134,7 @@ os.system('mkdir aligned_images raw_images')
 
 
 from IPython.display import HTML, Audio
-from google.colab.output import eval_js
+# from google.colab.output import eval_js
 from base64 import b64decode
 import numpy as np
 import io
