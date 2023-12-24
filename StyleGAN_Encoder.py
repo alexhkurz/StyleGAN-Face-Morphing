@@ -78,7 +78,7 @@ print(tf.__version__)
 # In[8]:
 
 
-get_ipython().system('python align_images.py raw_images/ aligned_images/ --output_size=1024')
+os.system('python align_images.py raw_images/ aligned_images/ --output_size=1024')
 
 
 # ## Let's take a look at our aligned images:
