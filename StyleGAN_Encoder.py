@@ -48,7 +48,8 @@ logging.info("The sum of %d and %d is %d.", a, b, c)
 
 
 import os
-os.system('pip install --upgrade tqdm')
+result = os.system('pip install --upgrade tqdm')
+logging.info("Upgraded tqdm, result: %s", result)
 
 
 # 2. Restart the Python kernel to load the updated version:
@@ -57,6 +58,7 @@ os.system('pip install --upgrade tqdm')
 
 
 import os 
+logging.info("About to kill the process...")
 os.kill(os.getpid(), 9)
 
 
@@ -66,8 +68,10 @@ os.kill(os.getpid(), 9)
 # In[1]:
 
 
-os.system('rm -rf sample_data')
-os.system('git clone https://github.com/pbaylies/stylegan-encoder')
+result = os.system('rm -rf sample_data')
+logging.info("Removed sample_data, result: %s", result)
+result = os.system('git clone https://github.com/pbaylies/stylegan-encoder')
+logging.info("Cloned stylegan-encoder, result: %s", result)
 
 
 # ### cd into the repo folder: (only run this cell once or things might get buggy)
