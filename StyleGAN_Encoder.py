@@ -87,7 +87,7 @@ ls
 # In[ ]:
 
 
-rm -rf aligned_images raw_images
+os.system('rm -rf aligned_images raw_images')
 
 
 # In[ ]:
