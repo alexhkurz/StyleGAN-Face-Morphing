@@ -6,10 +6,11 @@
 import logging
 import os
 import sys
+import subprocess
 try:
     import dlib
 except ModuleNotFoundError:
-    os.system('pip install dlib')
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'dlib'])
     import dlib
 sys.path.append(os.path.join(os.getcwd(), 'stylegan-encoder'))
 logging.basicConfig(level=logging.DEBUG)
