@@ -4,6 +4,9 @@
 # Adapted from https://www.youtube.com/watch?v=dCKbRCUyop8
 
 import logging
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd(), 'stylegan'))
 logging.basicConfig(level=logging.DEBUG)
 
 # Part I: Encoding images into StyleGAN's latent space
@@ -59,6 +62,7 @@ for img_path in imgs:
 
 
 import tensorflow as tf
+tf.compat.v1.disable_v2_behavior()
 print(tf.__version__)
 
 
