@@ -18,10 +18,14 @@ result = os.system('git clone https://github.com/pbaylies/stylegan-encoder')
 logging.info("Cloned stylegan-encoder, result: %s", result)
 
 os.chdir('stylegan-encoder')
-print(os.listdir())
 
-os.system('rm -rf aligned_images raw_images')
-os.system('mkdir aligned_images raw_images')
+# Check if the raw_images folder is empty
+if not os.listdir('raw_images'):
+    print("The raw_images folder is empty. Please add some images before running the script.")
+    exit()
+
+os.system('rm -rf aligned_images')
+os.system('mkdir aligned_images')
 
 # *   Right click the 'stylegan-encoder/raw_images' folder and click "upload"
 # *   I'd recommend starting with 3 - 6 different images containing faces
