@@ -6,6 +6,11 @@
 import logging
 import os
 import sys
+try:
+    import dlib
+except ModuleNotFoundError:
+    os.system('pip install dlib')
+    import dlib
 sys.path.append(os.path.join(os.getcwd(), 'stylegan-encoder'))
 logging.basicConfig(level=logging.DEBUG)
 
