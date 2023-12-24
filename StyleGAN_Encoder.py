@@ -62,7 +62,7 @@ for img_path in imgs:
 
 
 import tensorflow as tf
-tf.compat.v1.disable_v2_behavior()
+tf.compat.v1.enable_v2_behavior()
 print(tf.__version__)
 
 
