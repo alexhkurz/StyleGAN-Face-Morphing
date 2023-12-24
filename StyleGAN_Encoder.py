@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 # # Colab Notebook for my video "Face editing with Generative Adversarial Networks": 
 # https://www.youtube.com/watch?v=dCKbRCUyop8
 # 
@@ -33,7 +37,7 @@
 a = 20
 b = 30
 c = a+b
-print("The sum of %d and %d is %d." %(a,b,c))
+logging.info("The sum of %d and %d is %d.", a, b, c)
 
 
 # ## --EDIT-- Colab tqdm version fix:
